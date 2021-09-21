@@ -1,0 +1,3 @@
+//! replace resolve(response) with reject() to check the api failure flow.
+
+//! resolve empty list to check list with no friends.
