@@ -21,7 +21,22 @@ const mockList: Array<MockFriendsList> = [
         uuid: "",
     },
     {
-        name: "Friend Name",
+        name: "Shivangi Dubey",
+        isFavourite: false,
+        uuid: "",
+    },
+    {
+        name: "Rahul Mishra",
+        isFavourite: false,
+        uuid: "",
+    },
+    {
+        name: "Shivi Singh",
+        isFavourite: false,
+        uuid: "",
+    },
+    {
+        name: "Alok Agarwal",
         isFavourite: false,
         uuid: "",
     },

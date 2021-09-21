@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import MarkFavourite from "./mark-favourite";
 import RemoveFriend from "./remove-friend";
 import "../Assets/Styles/style.css";
-import Search from "./search";
+import InputElement from "./input-element";
 import { fetchFriendsList, uuidV4 } from "../Utils/mock-json";
 import { WarningModalProps } from "../Utils/interface";
 import ConfirmationPopUp from "./confirmation-popup";
+import Pagination from "./pagination";
 interface FriendsListProps {
 
 }
@@ -15,6 +16,9 @@ const FriendsList = (props: FriendsListProps) => {
     const [fetchFailed, setFetchFailed] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const [openWarning, setOpenWarning] = useState<WarningModalProps | null>(null);
+    const [currentList, setCurrentList] = useState(1);
+    // eslint-disable-next-line
+    const [friendsPerList, setFriendsPerList] = useState(4);
 
     useEffect(() => {
         fetchFriendsList().then(
@@ -75,6 +79,14 @@ const FriendsList = (props: FriendsListProps) => {
         setFriendsList(updatedList)
     }
 
+    const paginate = (listNumber: number) => {
+        setCurrentList(listNumber)
+    }
+
+    const indexOfLastList = currentList * friendsPerList;
+    const indexOfFirstList = indexOfLastList - friendsPerList;
+    const currentFriendList = friendsList.slice(indexOfFirstList, indexOfLastList);
+
     if (fetchFailed) {
         return (
             <div className="margin20px">Sorry!, unable to fetch data.</div>
@@ -83,11 +95,11 @@ const FriendsList = (props: FriendsListProps) => {
 
     return (
         <div className="container divider">
-            <div className="divider">Friends List</div>
-            <Search searchFriends={searchFriends} addFriend={addFriend}/>
-            <ul>
-             {/* eslint-disable-next-line */}
-                {friendsList.length ? (friendsList.filter((friend: any) => {
+            <div className="title leftPadding20 header">Friends List</div>
+            <InputElement  searchFriends={searchFriends}  addFriend={addFriend} />
+            <ul className="friendList">
+                {/* eslint-disable-next-line */}
+                {currentFriendList.length ? (currentFriendList.filter((friend: any) => {
                     if (searchTerm === "") {
                         return friend;
                     } else if (friend.name.toLowerCase().includes(searchTerm.toLowerCase())) {
@@ -95,11 +107,11 @@ const FriendsList = (props: FriendsListProps) => {
                     }
                 }).map((friend: any) => {
                     return (
-                        <div key={friend.id} className="divider listItem">
-                            <li >
+                        <div className="divider listItem leftPadding20">
+                            <li key={friend.id}>
                                 <div className="friendDetails">
-                                    <span>{friend.name}</span>
-                                    <span> {"is your friend"}</span>
+                                    <span className="title">{friend.name}</span>
+                                    <span > {"is your friend"}</span>
                                 </div>
                                 <MarkFavourite friendInfo={friend} toggleFavourite={toggleFavourite} />
                                 <RemoveFriend friendInfo={friend} handleDelete={handleDelete} />
@@ -107,11 +119,15 @@ const FriendsList = (props: FriendsListProps) => {
                         </div>
                     )
                 })) : (
-                    <div>
+                    <div className="padding20">
                         No friends added to the list.
                     </div>
                 )}
             </ul>
+            <Pagination
+                totalFriends={friendsList.length}
+                friendsPerList={friendsPerList}
+                setActiveListNumber={paginate} />
             {openWarning && (
                 <ConfirmationPopUp
                     isOpen={openWarning.isOpen}

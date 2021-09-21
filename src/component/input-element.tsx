@@ -4,7 +4,7 @@ interface SearchProps {
     searchFriends: any
     addFriend: any;
 }
-const Search = (props: SearchProps) => {
+const InputElement = (props: SearchProps) => {
     const { searchFriends, addFriend } = props;
     const [searchValue, setSearchValue] = useState("");
     const [newFriendValue, setNewFriendValue] = useState("");
@@ -39,4 +39,4 @@ const Search = (props: SearchProps) => {
     )
 }
 
-export default Search;
+export default InputElement;

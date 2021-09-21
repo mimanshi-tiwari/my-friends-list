@@ -6,7 +6,7 @@ interface RemoveFriendProps {
 }
 
 const RemoveFriend = (props: RemoveFriendProps) => {
-    const {handleDelete, friendInfo } = props;
+    const { handleDelete, friendInfo } = props;
     const handleDeleteClick = (friendId: string) => {
         handleDelete(friendId)
     }
