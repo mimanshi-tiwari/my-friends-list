@@ -1,5 +1,6 @@
 ul, li{
     display: inline-block;
+    width: 100%
 }
 ul {
     padding: 0 !important;

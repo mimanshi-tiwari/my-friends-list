@@ -10,7 +10,10 @@
     margin: 0;
 }
 .iconContainer {
-    display: inherit
+    display: inherit;
+    border: 1px solid grey;
+    margin-right: 10px !important;
+    padding: 2x
 }
 .screenReaderText { 
     border:0;   
@@ -23,6 +26,7 @@
     position: absolute !important;
     word-wrap:normal !important;
  }
+
 
  input[type=text], select {
     width: 100%;
@@ -44,14 +48,48 @@
   .searchContainer img {
     position: absolute;
     padding: 15px 0px;
-    left: 85%;
+    left: 90%;
   }
 
   .container {
-    border: 1px solid grey;
-    padding: 20px;
+    border: 1px solid grey;;
   }
-  div {
+  .divider {
     border-bottom: 1px solid grey;
+    margin: 20px !important;
   }
  
+  .friendDetails {
+    width: 65%;
+    float: left;
+  }
+  div.friendDetails > span {
+    width: 100%;
+    display: inline-block;
+  }
+
+  .margin20px {
+    margin: 20px !important
+  }
+
+  .confirmationModel {
+    z-index: 9999999;
+    position:absolute;
+    top: 35%;
+    left: 32%;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+  .header {
+    font-weight: 600;;
+  }
+  .confirmationModel div {
+    margin-bottom: 10px;
+    padding: 20px
+  }
+  .confirmationModel button {
+    margin-left : 6px;
+    padding: 6px
+  }
+
