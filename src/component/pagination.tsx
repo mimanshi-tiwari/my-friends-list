@@ -23,9 +23,9 @@ const Pagination = (props: PaginationProps) => {
                         listNumbers.map((number: number) => {
                             return (
                                 <li key={number} className="navigationList">
-                                    <a href="!#" onClick={() => paginate(number)}>
+                                    <button onClick={() => paginate(number)}>
                                         {number}
-                                    </a>
+                                    </button>
                                 </li>
                             )
                         })

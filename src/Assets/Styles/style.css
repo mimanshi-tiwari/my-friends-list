@@ -122,10 +122,10 @@ div.friendDetails > span {
 .navigationList {
   display: inline;
 }
-.navigationList a {
+.navigationList button {
   text-decoration: none;
-  margin: 10px;
-  padding: 0px 10px;
+  margin: 0px 10px;
+  padding: 5px 10px;
   border: 1px solid #dcd5d5;
   border-radius: 4px;
   color: black;
@@ -133,7 +133,7 @@ div.friendDetails > span {
   background: white;
 }
 
-.navigationList a:hover {
+.navigationList button:hover {
   background: aliceblue;
 }
 
